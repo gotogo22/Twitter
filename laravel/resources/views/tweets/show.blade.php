@@ -40,7 +40,6 @@
                         <p class="mb-0 text-secondary">{{ count($tweet->comments) }}</p>
                     </div>
 
-                    <!-- ここから -->
                     <div class="d-flex align-items-center">
                         @if (!in_array($user->id, array_column($tweet->favorites->toArray(), 'user_id'), TRUE))
                             <form method="POST" action="{{ url('favorites/') }}" class="mb-0">
@@ -59,7 +58,6 @@
                         @endif
                         <p class="mb-0 text-secondary">{{ count($tweet->favorites) }}</p>
                     </div>
-                    <!-- ここまで -->
 
                 </div>
             </div>
