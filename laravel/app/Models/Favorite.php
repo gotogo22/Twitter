@@ -8,9 +8,10 @@ class Favorite extends Model
 {
     public $timestamps = false;
 
-    // いいねしているかどうかの判定処理
+
     public function isFavorite(Int $user_id, Int $tweet_id)
     {
+        // いいねしているかどうかの判定処理（レコードがなければfalse(いいねがない状態でいいねボタン押下),レコードがあればtrue(いいねがある状態でいいねボタン押下))
         return (boolean) $this->where('user_id', $user_id)->where('tweet_id', $tweet_id)->first();
     }
 

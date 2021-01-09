@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+<!-- <form class="form-inline my-2 my-lg-0"　method="GET" action="{{ route('users.index') }}">
+                    <input class="form-control mr-sm-2" name="search" type="search" placeholder="アカウント名検索">
+                    <button class="btn btn-primary my-2 my-sm-0" type="submit">検索</button>
+                </form> -->
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">

@@ -17,12 +17,38 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $user)
+    public function index(User $user,Request $request)
     {
-        $all_users = $user->getAllUsers(auth()->user()->id);
+        // 検索フォーム
+        $search = $request->input('search');
 
+        $query = User::all();
+
+        //もしキーワードがなかったら
+        if($search == null){
+            $all_users = $user->getAllUsers(auth()->user()->id);
+        }else{
+            //全角スペースを半角に
+            $search_split = mb_convert_kana($search,'s');
+
+            //空白で区切る
+            $search_split2 = preg_split('/[\s]+/', $search_split,-1,PREG_SPLIT_NO_EMPTY);
+
+            //単語をループで回す
+            foreach($search_split2 as $value)
+            {
+            $query->where('name','like','%'.$value.'%');
+            }
+
+            $all_users=$user->getSearchUsers(auth()->user()->id);
+            // $query->select('id', 'your_name', 'title', 'created_at');
+            // $query->orderBy('created_at', 'asc');
+            // $contacts = $query->paginate(20);
+        }
+        $all_users = $user->getAllUsers(auth()->user()->id);
         return view('users.index', [
-            'all_users'  => $all_users
+            'all_users'  => $all_users,
+
         ]);
     }
 

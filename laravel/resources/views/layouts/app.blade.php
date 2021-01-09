@@ -33,21 +33,21 @@
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <!-- Left Side Of Navbar -->
+
                         <ul class="navbar-nav mr-auto">
 
                         </ul>
 
-                        <!-- Right Side Of Navbar -->
+
                         <ul class="navbar-nav ml-auto align-items-center">
-                            <!-- Authentication Links -->
+
                             @guest
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('ログイン') }}</a>
                                 </li>
                                 @if (Route::has('register'))
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                        <a class="nav-link" href="{{ route('register') }}">{{ __('アカウント作成') }}</a>
                                     </li>
                                 @endif
                             @else
@@ -67,7 +67,7 @@
                                         <a href="{{ route('logout') }}" class="dropdown-item"
                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
+                                            {{ __('ログアウト') }}
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -79,7 +79,12 @@
                         </ul>
                     </div>
                 </div>
+                <!-- <form class="form-inline my-2 my-lg-0"　method="GET" action="{{ route('users.index') }}">
+                    <input class="form-control mr-sm-2" name="search" type="search" placeholder="アカウント名検索">
+                    <button class="btn btn-primary my-2 my-sm-0" type="submit">検索</button>
+                </form> -->
             </nav>
+
 
             <main class="py-4">
                 @yield('content')
