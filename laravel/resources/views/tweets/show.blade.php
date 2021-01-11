@@ -88,6 +88,7 @@
                         <p class="mb-0 text-secondary">コメントはまだありません。</p>
                     </li>
                 @endforelse
+
                 <li class="list-group-item">
                     <div class="py-3">
                         <form method="POST" action="{{ route('comments.store') }}">
@@ -117,7 +118,7 @@
                                 <div class="col-md-12 text-right">
                                     <p class="mb-4 text-danger">140文字以内</p>
                                     <button type="submit" class="btn btn-primary">
-                                        ツイートする
+                                        コメントする
                                     </button>
                                 </div>
                             </div>

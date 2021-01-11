@@ -21,12 +21,11 @@ class UsersController extends Controller
     {
         // 検索フォーム
         $search = $request->input('search');
-
-        $query = User::all();
+        $user_id=auth()->user()->id;
 
         //もしキーワードがなかったら
         if($search == null){
-            $all_users = $user->getAllUsers(auth()->user()->id);
+            $all_users = $user->getAllUsers($user_id);
         }else{
             //全角スペースを半角に
             $search_split = mb_convert_kana($search,'s');
@@ -37,18 +36,12 @@ class UsersController extends Controller
             //単語をループで回す
             foreach($search_split2 as $value)
             {
-            $query->where('name','like','%'.$value.'%');
+            $all_users =$user->getSearchUsers($value);
             }
-
-            $all_users=$user->getSearchUsers(auth()->user()->id);
-            // $query->select('id', 'your_name', 'title', 'created_at');
-            // $query->orderBy('created_at', 'asc');
-            // $contacts = $query->paginate(20);
         }
-        $all_users = $user->getAllUsers(auth()->user()->id);
+
         return view('users.index', [
             'all_users'  => $all_users,
-
         ]);
     }
 

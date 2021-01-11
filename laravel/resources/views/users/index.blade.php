@@ -1,14 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- <form class="form-inline my-2 my-lg-0"　method="GET" action="{{ route('users.index') }}">
-                    <input class="form-control mr-sm-2" name="search" type="search" placeholder="アカウント名検索">
-                    <button class="btn btn-primary my-2 my-sm-0" type="submit">検索</button>
-                </form> -->
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                @foreach ($all_users as $user)
+                <form class="form-inline my-2 my-lg-0"　method="GET" action="{{ route('users.index') }}">
+                <input class="form-control mr-sm-2" name="search" type="search" placeholder="アカウント名検索">
+                <button class="btn btn-primary my-2 my-sm-0" type="submit">検索</button>
+                </form>
+                @forelse ($all_users as $user)
                     <div class="card">
                         <div class="card-haeder p-3 w-100 d-flex">
                             <img src="{{ asset('storage/profile_image/' .$user->profile_image) }}" class="rounded-circle" width="50" height="50">
@@ -39,7 +40,11 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @empty
+                    <div class="card">
+                        <p class="mb-0 text-secondary">該当がありません。</p>
+                    </div>
+                @endforelse
             </div>
         </div>
         <div class="my-4 d-flex justify-content-center">

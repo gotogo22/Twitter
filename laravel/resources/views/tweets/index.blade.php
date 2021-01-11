@@ -30,7 +30,7 @@
                                         <i class="fas fa-ellipsis-v fa-fw"></i>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <form method="POST" action="{{ url('tweets/' .$timeline->id) }}" class="mb-0">
+                                        <form method="DELETE" action="{{ url('tweets/'.$timeline->id) }}" class="mb-0">
                                             @csrf
                                             @method('DELETE')
 

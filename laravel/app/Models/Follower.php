@@ -21,7 +21,6 @@ class Follower extends Model
     {
          //自モデルの引数のユーザーIDのフォローワー数をカウントする
         return $this->where('following_id', $user_id)->count();
-
     }
 
     public function getFollowerCount($user_id)
@@ -33,6 +32,7 @@ class Follower extends Model
     public function followingIds(Int $user_id)
     {
         // SELECT followed_id FROM followers WHERE following_id = 1
+        // フォローしているユーザのIDを取得
         return $this->where('following_id', $user_id)->get('followed_id');
     }
 

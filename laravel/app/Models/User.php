@@ -38,9 +38,9 @@ class User extends Authenticatable
         return $this->Where('id', '<>', $user_id)->paginate(5);
     }
 
-    public function getSearchUsers(Int $user_id)
+    public function getSearchUsers(string $value)
     {
-        return $this->Where('id', '<>', $user_id)->paginate(5);
+        return $this->where('name','like','%'.$value.'%')->paginate(5);
     }
 
     public function follow(Int $user_id)
