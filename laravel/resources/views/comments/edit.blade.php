@@ -8,7 +8,7 @@
                 <div class="card-header">編集</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('tweets.update', ['tweets' => $tweets]) }}">
+                    <form method="POST" action="{{ route('comments.update', ['comments' => $comments]) }}">
                         @csrf
                         @method('PUT')
 
@@ -21,7 +21,7 @@
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <textarea class="form-control @error('text') is-invalid @enderror" name="text" required autocomplete="text" rows="4">{{ old('text') ? : $tweets->text }}</textarea>
+                                <textarea class="form-control @error('text') is-invalid @enderror" name="text" required autocomplete="text" rows="4">{{ old('text') ? : $comments->text }}</textarea>
 
                                 @error('text')
                                     <span class="invalid-feedback" role="alert">

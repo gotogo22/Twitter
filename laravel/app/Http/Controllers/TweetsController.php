@@ -116,7 +116,6 @@ class TweetsController extends Controller
         $validator = Validator::make($data, [
             'text' => ['required', 'string', 'max:140']
         ]);
-
         $validator->validate();
         $tweet->tweetUpdate($tweet->id, $data);
 

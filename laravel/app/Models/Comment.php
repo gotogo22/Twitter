@@ -38,8 +38,24 @@ class Comment extends Model
         return;
     }
 
+    public function getEditComment(Int $user_id, Int $commnet_id)
+    {
+        return $this->where('user_id', $user_id)->where('id', $commnet_id)->first();
+    }
 
+    public function commentUpdate(Int $commnet_id, Array $data)
+    {
 
+        $this->id = $commnet_id;
+        $this->text = $data['text'];
+        $this->update();
+        return;
+    }
+
+    public function tweetDestroy(Int $user_id, Int $commnet_id)
+    {
+        return $this->where('user_id', $user_id)->where('id', $commnet_id)->delete();
+    }
 
 
 }

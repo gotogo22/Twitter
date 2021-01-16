@@ -77,7 +77,6 @@ class Tweet extends Model
         $this->id = $tweet_id;
         $this->text = $data['text'];
         $this->update();
-
         return;
     }
 
