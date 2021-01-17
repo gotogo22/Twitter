@@ -37,6 +37,9 @@
                                 <button type="submit" class="btn btn-primary">
                                     更新する
                                 </button>
+                                <button type="button" class="btn btn-secondary" onclick="history.back()">
+                                    戻る
+                                </button>
                             </div>
                         </div>
                     </form>

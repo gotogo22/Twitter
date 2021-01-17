@@ -74,6 +74,9 @@
 
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}">アカウント作成</a>
+                            <a href="{{ route('login.guest') }}" class="text-white">
+                                ゲストログイン
+                            </a>
                         @endif
                     @endauth
                 </div>

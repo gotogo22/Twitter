@@ -74,7 +74,6 @@ public function show(Tweet $tweet, Comment $comment)
         $validator->validate();
 
         $comment->commentUpdate($comment->id, $data);
-        // dd();
         return redirect('tweets/' .$comment->tweet_id);
     }
 
@@ -84,10 +83,10 @@ public function show(Tweet $tweet, Comment $comment)
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Commnet $commnet)
+    public function destroy(Comment $comment)
     {
         $user = auth()->user();
-        $commnet->commentDestroy($user->id, $commnet->id);
+        $comment->commentDestroy($user->id, $comment->id);
 
         return back();
     }

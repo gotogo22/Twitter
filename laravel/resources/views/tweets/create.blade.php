@@ -36,6 +36,9 @@
                                 <button type="submit" class="btn btn-primary">
                                     ツイートする
                                 </button>
+                                <button type="button" class="btn btn-secondary" onclick="history.back()">
+                                    戻る
+                                </button>
                             </div>
                         </div>
                     </form>

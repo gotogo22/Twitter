@@ -133,6 +133,6 @@ class TweetsController extends Controller
         $user = auth()->user();
         $tweet->tweetDestroy($user->id, $tweet->id);
 
-        return back();
+        return redirect('tweets');
     }
 }

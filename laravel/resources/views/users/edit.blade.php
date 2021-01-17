@@ -71,7 +71,12 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">更新する</button>
+                                <button type="submit" class="btn btn-primary">
+                                    更新する
+                                </button>
+                                <button type="button" class="btn btn-secondary" onclick="history.back()">
+                                    戻る
+                                </button>
                             </div>
                         </div>
                     </form>

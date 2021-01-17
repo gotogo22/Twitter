@@ -52,7 +52,7 @@ class Comment extends Model
         return;
     }
 
-    public function tweetDestroy(Int $user_id, Int $commnet_id)
+    public function commentDestroy(Int $user_id, Int $commnet_id)
     {
         return $this->where('user_id', $user_id)->where('id', $commnet_id)->delete();
     }

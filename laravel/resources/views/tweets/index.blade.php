@@ -30,7 +30,7 @@
                                         <i class="fas fa-ellipsis-v fa-fw"></i>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <form method="DELETE" action="{{ url('tweets/'.$timeline->id) }}" class="mb-0">
+                                        <form method="POST" action="{{ url('tweets/' .$timeline->id) }}" class="mb-0">
                                             @csrf
                                             @method('DELETE')
 
@@ -45,6 +45,7 @@
                                 <p class="mb-0 text-secondary">{{ count($timeline->comments) }}</p>
                             </div>
 
+                            <!-- ここから -->
                             <div class="d-flex align-items-center">
                                 @if (!in_array($user->id, array_column($timeline->favorites->toArray(), 'user_id'), TRUE))
                                     <form method="POST" action="{{ url('favorites/') }}" class="mb-0">
@@ -63,6 +64,7 @@
                                 @endif
                                 <p class="mb-0 text-secondary">{{ count($timeline->favorites) }}</p>
                             </div>
+                            <!-- ここまで -->
 
                         </div>
                     </div>
