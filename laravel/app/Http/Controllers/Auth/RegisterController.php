@@ -53,7 +53,7 @@ class RegisterController extends Controller
             'screen_name' => ['required', 'string', 'max:255', 'unique:users'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required',new AlphaNumHalf, 'min:8','confirmed'],
+            'password' => ['required','regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9-]{8,24}$/', 'min:8','confirmed'],
         ]);
     }
 
