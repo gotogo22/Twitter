@@ -8,7 +8,8 @@ use Illuminate\Validation\Rule;
 use App\Models\User;
 use App\Models\Tweet;
 use App\Models\Follower;
-
+use App\Http\Requests\ValidatateForm;
+use App\Services\CheckSearch;
 
 class UsersController extends Controller
 {
@@ -23,22 +24,7 @@ class UsersController extends Controller
         $search = $request->input('search');
         $user_id=auth()->user()->id;
 
-        //もしキーワードがなかったら
-        if($search == null){
-            $all_users = $user->getAllUsers($user_id);
-        }else{
-            //全角スペースを半角に
-            $search_split = mb_convert_kana($search,'s');
-
-            //空白で区切る
-            $search_split2 = preg_split('/[\s]+/', $search_split,-1,PREG_SPLIT_NO_EMPTY);
-
-            //単語をループで回す
-            foreach($search_split2 as $value)
-            {
-            $all_users =$user->getSearchUsers($value);
-            }
-        }
+        $all_users = CheckSearch::checkDate($search,$user_id,$user);
 
         return view('users.index', [
             'all_users'  => $all_users,

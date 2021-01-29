@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Tweet;
 use App\Models\Comment;
 use App\Models\Follower;
+use App\Http\Requests\ValidatateForm;
 
 class TweetsController extends Controller
 {
@@ -49,15 +50,15 @@ class TweetsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Tweet $tweet)
+    public function store(ValidatateForm $request, Tweet $tweet)
     {
         $user = auth()->user();
         $data = $request->all();
-        $validator = Validator::make($data, [
-            'text' => ['required', 'string', 'max:140']
-        ]);
+        // $validator = Validator::make($data, [
+        //     'text' => ['required', 'string', 'max:140']
+        // ]);
 
-        $validator->validate();
+        // $validator->validate();
         $tweet->tweetStore($user->id, $data);
 
         return redirect('tweets');
@@ -110,13 +111,13 @@ class TweetsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tweet $tweet)
+    public function update(ValidatateForm $request, Tweet $tweet)
     {
         $data = $request->all();
-        $validator = Validator::make($data, [
-            'text' => ['required', 'string', 'max:140']
-        ]);
-        $validator->validate();
+        // $validator = Validator::make($data, [
+        //     'text' => ['required', 'string', 'max:140']
+        // ]);
+        // $validator->validate();
         $tweet->tweetUpdate($tweet->id, $data);
 
         return redirect('tweets');
