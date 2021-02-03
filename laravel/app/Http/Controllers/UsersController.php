@@ -8,7 +8,7 @@ use Illuminate\Validation\Rule;
 use App\Models\User;
 use App\Models\Tweet;
 use App\Models\Follower;
-use App\Http\Requests\ValidatateForm;
+use App\Http\Requests\UserRequest;
 use App\Services\CheckSearch;
 
 class UsersController extends Controller
@@ -100,16 +100,16 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UserRequest $request, User $user)
     {
         $data = $request->all();
-        $validator = Validator::make($data, [
-            'screen_name'   => ['required', 'string', 'max:50', Rule::unique('users')->ignore($user->id)],
-            'name'          => ['required', 'string', 'max:255'],
-            'profile_image' => ['file', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
-            'email'         => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)]
-        ]);
-        $validator->validate();
+        // $validator = Validator::make($data, [
+        //     'screen_name'   => ['required', 'string', 'max:50', Rule::unique('users')->ignore($user->id)],
+        //     'name'          => ['required', 'string', 'max:255'],
+        //     'profile_image' => ['file', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
+        //     'email'         => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)]
+        // ]);
+        // $validator->validate();
         $user->updateProfile($data);
 
         return redirect('users/'.$user->id);

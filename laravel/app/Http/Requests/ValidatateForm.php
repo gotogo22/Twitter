@@ -24,12 +24,14 @@ class ValidatateForm extends FormRequest
      */
     public function rules()
     {
+
         return [
-            'tweet_id' =>['required', 'integer'],
+            // 'tweet_id' =>['required', 'integer'],
             'text'     => ['required', 'string', 'max:140'],
-            'screen_name'   => ['required', 'string', 'max:50'],
-            'name'          => ['required', 'string', 'max:255'],
-            'profile_image' => ['file', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
+            // 'screen_name'   => ['required', 'string', 'max:50'],
+            // 'name'          => ['required', 'string', 'max:255'],
+            // 'profile_image' => ['file', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
         ];
+
     }
 }
